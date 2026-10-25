@@ -49,7 +49,6 @@ export default function CropCard({
           src={image}
           alt={name}
           className="max-h-full max-w-full object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm"
-          loading="lazy"
         />
       </div>
 
