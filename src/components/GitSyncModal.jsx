@@ -14,7 +14,7 @@ import {
 
 export default function GitSyncModal({ isOpen, onClose, activeField, nasaData }) {
   const [copied, setCopied] = useState(false);
-  const repoUrl = "https://github.com/rupeshpatil14042006-cpu/NASA.git";
+  const repoUrl = "https://github.com/rupeshpatil14042006-cpu/nasa-squad-x.git";
 
   if (!isOpen) return null;
 

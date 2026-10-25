@@ -17,7 +17,7 @@ import {
 
 export default function NasaChallengeDossier({ activeField, nasaData, onOpenGitModal }) {
   const [copied, setCopied] = useState(false);
-  const repoUrl = "https://github.com/rupeshpatil14042006-cpu/NASA.git";
+  const repoUrl = "https://github.com/rupeshpatil14042006-cpu/nasa-squad-x.git";
 
   const gitPushCommand = `git add .\ngit commit -m "feat: SQUADX NASA Earth Observation & Crop Rotation Platform"\ngit branch -M main\ngit push -u origin main`;
 
