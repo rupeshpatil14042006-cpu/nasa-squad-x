@@ -80,12 +80,33 @@
 
 ---
 
+### 6. Decentralized Blockchain & Enterprise Security
+- **Cryptographic Hash Chain & Merkle Explorer**:
+  - SHA-256 Proof-of-Work mining algorithm for farm telemetry and harvest batches.
+  - Merkle tree proof computation for batch transactions.
+  - Interactive **Tamper Detection Simulator**: Demonstrates instant cryptographic consensus rejection if any record is mutated.
+- **Production Solidity Smart Contracts (`/contracts`)**:
+  - `AgriSmartLedger.sol`: Farm registration, harvest batch certification, and immutable sensor hash commits.
+  - `ParametricCropInsurance.sol`: Oracle-driven climate disaster insurance with $50,000 USDC escrow pool; automatically disburses relief if NASA weather observations breach drought thresholds (>14 dry spell days or >40% rain deficit).
+  - `AgriCarbonCredit.sol`: ERC-20 token (`AGRI-CARBON`) for satellite MRV-verified carbon offsets (Landsat NDVI $\ge 0.65$).
+- **AI Prompt Injection Firewall (OWASP LLM01)**:
+  - Input sanitizer in `AIAssistant.jsx` guarding against prompt leaks, system jailbreaks, and script injection.
+- **Hardened Security Controls**:
+  - Anti-DDoS sliding-window rate limiting (120 req/min/IP).
+  - Client-side `SecureStorage` with HMAC-SHA256 signatures for tamper-evident persistence.
+  - Full OWASP Security Headers (CSP, Strict-Transport-Security, X-Frame-Options: DENY, X-Content-Type-Options: nosniff).
+  - Automated security audit REST endpoint: `/api/security/audit` reporting 99/100 (Grade A+).
+
+---
+
 ## 🛠️ Technology Stack
 
 | Layer | Technologies |
 |---|---|
 | **Frontend Framework** | React 19.3, Vite 8.3, Vanilla JavaScript (ESM) |
 | **Styling & Design System** | Tailwind CSS v4, Lucide Icons, Google Fonts (Outfit, Inter) |
+| **Blockchain & Smart Contracts** | Solidity 0.8.20, Web3, SHA-256 Merkle Trees, EVM (Sepolia) |
+| **Security & Cryptography** | Web Crypto API (SHA-256, HMAC), OWASP LLM01 Firewall, Sliding Window Rate Limiting |
 | **Spatial & Mapping** | Leaflet 1.9, Leaflet-Geoman (polygon drawing), Esri World Imagery, Turf.js |
 | **3D Graphics** | Three.js (Digital Field Twin terrain simulation) |
 | **Authentication** | Firebase Auth v13 (Email/Password, Google OAuth, 1-Click Demo) |
