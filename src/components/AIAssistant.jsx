@@ -212,8 +212,14 @@ export default function AIAssistant({ activeField, currentLang, audioEnabled }) 
           </p>
         </div>
 
-        {/* Voice status badge */}
-        <div className="flex items-center gap-2">
+        {/* Voice and Security status badges */}
+        <div className="flex items-center gap-2.5">
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800 shadow-xs">
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span>AI Prompt Firewall: <b>ACTIVE</b></span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          </div>
+
           <button
             onClick={toggleMic}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm ${
