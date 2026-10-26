@@ -41,8 +41,7 @@ class TelemetryTransaction(BaseModel):
     ndvi_score: Optional[float] = Field(None, ge=0.0, le=1.0)
     soil_moisture_pct: Optional[float] = Field(None, ge=0.0, le=100.0)
     soil_ph: Optional[float] = Field(None, ge=0.0, le=14.0)
-    temperature_c: Optional[float] = Field(None, ge=-50.0, le=70.0)
-    farmer_address: str = Field(..., regex=r"^0x[a-fA-F0-9]{40}$")
+    farmer_address: str = Field(..., max_length=42, min_length=42)
 
 
 class InsuranceEvaluationRequest(BaseModel):
@@ -51,7 +50,7 @@ class InsuranceEvaluationRequest(BaseModel):
     lon: float = Field(..., ge=-180.0, le=180.0)
     dry_spell_days: int = Field(default=0, ge=0)
     rainfall_deficit_pct: float = Field(default=0.0, ge=0.0, le=100.0)
-    farmer_wallet: str = Field(..., regex=r"^0x[a-fA-F0-9]{40}$")
+    farmer_wallet: str = Field(..., max_length=42, min_length=42)
 
 
 # In-memory verified ledger mirror

@@ -20,7 +20,10 @@ import {
   Cloud,
   CloudRain,
   CloudSun,
-  Sparkles
+  Sparkles,
+  Blocks,
+  ShieldCheck,
+  Coins
 } from 'lucide-react';
 import CropCard from './CropCard';
 import { FEATURED_CROPS } from '../data/featuredCrops';
@@ -596,6 +599,37 @@ export default function AgriSmartDashboard({
           </button>
         </div>
       )}
+
+      {/* 3.5. Decentralized Blockchain & Smart Contract Telemetry Banner */}
+      <div className="bg-gradient-to-r from-[#0d2818] via-[#113520] to-[#1a4a2e] rounded-2xl p-5 text-white shadow-md border border-emerald-800/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-3.5">
+          <div className="w-11 h-11 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center shrink-0 shadow-inner">
+            <Blocks className="w-5 h-5 text-emerald-400" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h4 className="font-bold text-sm sm:text-base font-['Outfit'] text-white">
+                Decentralized Crop Provenance & Climate Oracle Active
+              </h4>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 border border-emerald-400/30 font-bold uppercase">
+                SHA-256 Ledger
+              </span>
+            </div>
+            <p className="text-xs text-emerald-200/80 mt-0.5">
+              Live farm telemetry cryptographically committed on-chain · Parametric escrow pool ready ($50,000 USDC)
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={() => setActiveTab('blockchain')}
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#0d2818] text-xs font-bold transition-all shadow-md shrink-0 cursor-pointer hover:scale-102"
+        >
+          <ShieldCheck className="w-4 h-4" />
+          <span>Open Blockchain Hub</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </button>
+      </div>
 
       {/* 4. Suggested Crops with Images (Matching Reference UI) */}
       <div className="space-y-4 pt-2">
