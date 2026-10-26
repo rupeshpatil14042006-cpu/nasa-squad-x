@@ -11,7 +11,8 @@ import {
   Settings, 
   ArrowRight, 
   Leaf,
-  X
+  X,
+  ShieldCheck
 } from 'lucide-react';
 
 export default function Sidebar({ 
@@ -27,6 +28,7 @@ export default function Sidebar({
     { id: 'iot', label: 'IoT Devices', icon: Cpu },
     { id: 'weather', label: 'Weather', icon: CloudSun },
     { id: 'analytics', label: 'Analytics', icon: BarChart3 },
+    { id: 'blockchain', label: 'Blockchain & Security', icon: ShieldCheck, badge: 'EVM' },
     { id: 'reports', label: 'Reports', icon: FileText },
     { id: 'tasks', label: 'Tasks', icon: CheckSquare },
     { id: 'settings', label: 'Settings', icon: Settings },
@@ -87,8 +89,15 @@ export default function Sidebar({
                       : 'text-emerald-100/70 hover:text-white hover:bg-emerald-900/40'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-emerald-300/80'}`} />
-                  <span>{item.label}</span>
+                  <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-white' : 'text-emerald-300/80'}`} />
+                  <div className="flex items-center justify-between flex-1">
+                    <span className="truncate">{item.label}</span>
+                    {item.badge && (
+                      <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-md bg-emerald-400 text-[#0d2818] font-mono tracking-wider ml-1">
+                        {item.badge}
+                      </span>
+                    )}
+                  </div>
                 </button>
               );
             })}

@@ -21,6 +21,7 @@ const ProfitVsResilience = lazy(() => import('./components/ProfitVsResilience'))
 const NasaChallengeDossier = lazy(() => import('./components/NasaChallengeDossier'));
 const GitSyncModal = lazy(() => import('./components/GitSyncModal'));
 const CropAdvisoryEngine = lazy(() => import('./components/CropAdvisoryEngine'));
+const BlockchainSecurityHub = lazy(() => import('./components/BlockchainSecurityHub'));
 
 const TRACKED_LOCATIONS_STORAGE_KEY = 'squadx-tracked-locations';
 const MAX_SAVED_TRACKED_LOCATIONS = 10;
@@ -480,6 +481,14 @@ export default function App() {
                   />
                 </div>
               </div>
+            )}
+
+            {/* Blockchain & Security Hub */}
+            {activeTab === 'blockchain' && (
+              <BlockchainSecurityHub
+                activeField={activeField}
+                nasaData={nasaData}
+              />
             )}
 
             {/* G. Reports (NASA Dossier & Summary) */}

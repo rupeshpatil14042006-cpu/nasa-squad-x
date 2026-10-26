@@ -15,7 +15,8 @@ import {
   Smartphone,
   LogOut,
   LogIn,
-  ShieldCheck
+  ShieldCheck,
+  Blocks
 } from 'lucide-react';
 import { firebaseProjectInfo } from '../services/firebaseAuth';
 
@@ -88,6 +89,17 @@ export default function AgriHeader({
             <span>Firebase: <b className="font-mono text-emerald-900">{firebaseProjectInfo.projectId}</b></span>
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           </div>
+
+          {/* Blockchain & Security Quick Link Button */}
+          <button
+            onClick={() => setActiveTab && setActiveTab('blockchain')}
+            className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 border border-purple-200 text-xs font-bold text-purple-900 transition-all shadow-xs cursor-pointer hover:scale-102"
+            title="Inspect Decentralized Blockchain Ledger & Security Posture"
+          >
+            <Blocks className="w-4 h-4 text-purple-600" />
+            <span>Ledger: <b className="font-mono text-purple-800">EVM Synced</b></span>
+            <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+          </button>
 
           {/* Location Badge (quick field indicator) */}
           <div className="hidden lg:flex items-center gap-1.5 text-xs text-slate-600 bg-slate-100/80 px-3 py-1.5 rounded-xl border border-slate-200/60 font-medium">
