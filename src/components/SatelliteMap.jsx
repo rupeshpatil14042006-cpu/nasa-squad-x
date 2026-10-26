@@ -349,39 +349,39 @@ export default function SatelliteMap({ activeField, savedFarmData, onFarmDataCha
 
         {/* Floating Top Left: Health Metrics Card */}
         <div className="absolute top-4 left-4 z-[400] flex flex-col gap-2 max-w-xs">
-          <div className="glass-panel-glow p-3.5 rounded-xl text-xs space-y-2">
-            <p className="text-[10px] text-amber-300">{isGps ? "Draw a farm boundary to request historical NDVI" : "Draw a farm boundary to request historical NDVI"}</p>
+          <div className="bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md p-3.5 rounded-xl text-xs space-y-2">
+            <p className="text-[10px] text-emerald-800 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">{isGps ? "Draw a farm boundary to request historical NDVI" : "Draw a farm boundary to request historical NDVI"}</p>
             <div className="flex items-center justify-between">
-              <span className="font-bold text-slate-200 uppercase tracking-wider text-[11px]">
+              <span className="font-bold text-slate-800 uppercase tracking-wider text-[11px]">
                 Canopy Health Status
               </span>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
                 {vegetationStatus}
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-800">
+            <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-100">
               <div>
-                <p className="text-[10px] text-slate-400">Timeline NDVI</p>
-                <p className="text-xl font-black text-emerald-400 font-['Outfit']">
+                <p className="text-[10px] text-slate-500">Timeline NDVI</p>
+                <p className="text-xl font-black text-emerald-600 font-['Outfit']">
                   {currentSnapshot?.ndvi?.toFixed(3) ?? "N/A"}
                 </p>
-                <p className="text-[10px] text-slate-400">
+                <p className="text-[10px] text-slate-500">
                   {currentSnapshot?.observationCount
                     ? `${currentSnapshot.observationCount} usable Landsat scene · ${currentSnapshot.validPixels ?? 0} valid 30 m pixels`
                     : "No usable observations"}
                 </p>
               </div>
               <div>
-                <p className="text-[10px] text-slate-400">Canopy Cover</p>
-                <p className="text-xl font-black text-cyan-400 font-['Outfit']">
+                <p className="text-[10px] text-slate-500">Canopy Cover</p>
+                <p className="text-xl font-black text-cyan-700 font-['Outfit']">
                   {canopyCoverPercent != null ? `~${canopyCoverPercent}%` : "N/A"}
                 </p>
-                <p className="text-[10px] text-slate-400">Approx. NDVI-derived cover</p>
+                <p className="text-[10px] text-slate-500">Approx. NDVI-derived cover</p>
               </div>
             </div>
 
-            <p className="text-[10px] text-slate-400">
+            <p className="text-[10px] text-slate-500">
               {currentSnapshot?.validPixels > 0 && currentSnapshot.validPixels < 3
                 ? "Very few clear pixels; this estimate is highly uncertain."
                 : "Approximate fractional cover from NDVI (bare-soil 0.20, dense canopy 0.86); not field-calibrated."}
@@ -389,17 +389,17 @@ export default function SatelliteMap({ activeField, savedFarmData, onFarmDataCha
           </div>
 
           {/* Toggle Switches */}
-          <div className="glass-panel p-2 rounded-xl flex items-center justify-between text-xs gap-3">
-            <label className="flex items-center gap-1.5 cursor-pointer text-slate-300 hover:text-white">
+          <div className="bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md p-2 rounded-xl flex items-center justify-between text-xs gap-3">
+            <label className="flex items-center gap-1.5 cursor-pointer text-slate-700 hover:text-slate-900 font-medium">
               <input
                 type="checkbox"
                 checked={showNdviOverlay}
                 onChange={(e) => setShowNdviOverlay(e.target.checked)}
-                className="accent-emerald-500 rounded"
+                className="accent-emerald-600 rounded"
               />
               <span>NDVI Heatmap</span>
             </label>
-            <label className="flex items-center gap-1.5 cursor-pointer text-slate-300 hover:text-white">
+            <label className="flex items-center gap-1.5 cursor-pointer text-slate-700 hover:text-slate-900 font-medium">
               <input
                 type="checkbox"
                 checked={showStressZones}
@@ -413,50 +413,50 @@ export default function SatelliteMap({ activeField, savedFarmData, onFarmDataCha
 
         {/* Floating Top Right: Click Inspector */}
         {clickedCoord && (
-          <div className="absolute top-4 right-4 z-[400] glass-panel-glow p-3 rounded-xl max-w-xs text-xs space-y-1 animate-in fade-in">
-            <div className="flex items-center justify-between font-bold text-slate-200">
-              <span className="flex items-center gap-1.5 text-cyan-400">
+          <div className="absolute top-4 right-4 z-[400] bg-white/95 backdrop-blur-md border border-slate-200 shadow-md p-3 rounded-xl max-w-xs text-xs space-y-1 animate-in fade-in">
+            <div className="flex items-center justify-between font-bold text-slate-900">
+              <span className="flex items-center gap-1.5 text-emerald-700">
                 <MapPin className="w-3.5 h-3.5" />
                 Spot Coordinate
               </span>
               <button 
                 onClick={() => setClickedCoord(null)}
-                className="text-slate-400 hover:text-white text-xs px-1"
+                className="text-slate-400 hover:text-slate-700 text-xs px-1"
               >
                 ✕
               </button>
             </div>
-            <p className="text-slate-300">Lat: {clickedCoord.lat}, Lon: {clickedCoord.lon}</p>
-            <p className="text-slate-400 pt-1 border-t border-slate-800">Measured Landsat NDVI is shown on analyzed farm cells; soil moisture is not connected to this map.</p>
+            <p className="text-slate-700">Lat: {clickedCoord.lat}, Lon: {clickedCoord.lon}</p>
+            <p className="text-slate-500 pt-1 border-t border-slate-100">Measured Landsat NDVI is shown on analyzed farm cells; soil moisture is not connected to this map.</p>
           </div>
         )}
 
         {/* Real-data status; never substitute fabricated NDVI. */}
-        <div className="absolute bottom-44 right-4 z-[400] max-w-sm rounded-xl bg-slate-950/90 p-3 text-xs text-white">
-          <div>{farmAreaAcres == null ? "Draw a rectangle or polygon to load satellite history." : `Selected farm: ${farmAreaAcres.toFixed(2)} acres`}</div>
-          {historyLoading && <div className="text-cyan-300">Retrieving satellite observations...</div>}
-          {historyError && <div className="text-amber-300">{historyError}</div>}
-          {!historyLoading && !historyError && farmBoundary && history.length === 0 && <div>No usable observations found.</div>}
+        <div className="absolute bottom-44 right-4 z-[400] max-w-sm rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-md p-3 text-xs text-slate-800">
+          <div className="font-semibold text-slate-900">{farmAreaAcres == null ? "Draw a rectangle or polygon to load satellite history." : `Selected farm: ${farmAreaAcres.toFixed(2)} acres`}</div>
+          {historyLoading && <div className="text-emerald-700 font-medium">Retrieving satellite observations...</div>}
+          {historyError && <div className="text-amber-700 font-medium">{historyError}</div>}
+          {!historyLoading && !historyError && farmBoundary && history.length === 0 && <div className="text-slate-500">No usable observations found.</div>}
         </div>
 
         {/* Floating Bottom: Time-Series Change Detection Slider */}
-        <div className="absolute bottom-4 left-4 right-4 z-[400] glass-panel-glow p-4 rounded-xl">
+        <div className="absolute bottom-4 left-4 right-4 z-[400] bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md p-4 rounded-xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-emerald-400" />
-              <span className="text-xs font-bold text-slate-200">
+              <Calendar className="w-4 h-4 text-emerald-600" />
+              <span className="text-xs font-bold text-slate-900">
                 Landsat NDVI History (cloud-filtered observations)
               </span>
             </div>
             <div className="flex items-center gap-2 text-xs">
-              <span className="text-slate-400">Selected Date:</span>
-              <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">
+              <span className="text-slate-500">Selected Date:</span>
+              <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">
                 {currentSnapshot?.sceneDate ?? currentSnapshot?.date ?? "N/A"} ({currentSnapshot?.ndvi == null ? "No observation" : `NDVI ${currentSnapshot.ndvi.toFixed(3)}`})
               </span>
             </div>
           </div>
 
-          <p className="mb-2 text-[11px] text-slate-300">
+          <p className="mb-2 text-[11px] text-slate-600">
             {historyLoading
               ? "Loading measured observations..."
               : !farmBoundary
@@ -476,15 +476,15 @@ export default function SatelliteMap({ activeField, savedFarmData, onFarmDataCha
               max={Math.max(0, timeline.length - 1)}
               value={selectedTimelineIndex}
               onChange={(e) => setSelectedTimelineIndex(Number(e.target.value))}
-              className="w-full accent-emerald-500 h-2 bg-slate-800 rounded-lg cursor-pointer"
+              className="w-full accent-emerald-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
             />
             {/* Timeline Tick Labels */}
-            <div className="flex justify-between text-[10px] text-slate-400 mt-1.5 font-medium px-1">
+            <div className="flex justify-between text-[10px] text-slate-500 mt-1.5 font-medium px-1">
               {timeline.map((item, idx) => (
                 <span 
                   key={idx}
                   className={`cursor-pointer transition-colors ${
-                    idx === selectedTimelineIndex ? 'text-emerald-300 font-bold' : 'hover:text-slate-200'
+                    idx === selectedTimelineIndex ? 'text-emerald-700 font-bold' : 'hover:text-slate-800'
                   }`}
                   onClick={() => setSelectedTimelineIndex(idx)}
                 >
@@ -495,10 +495,10 @@ export default function SatelliteMap({ activeField, savedFarmData, onFarmDataCha
           </div>
 
           {/* NDVI Legend Bar */}
-          <div className="mt-3 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400">
+          <div className="mt-3 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-600">
             <div className="flex items-center gap-2">
-              <span>NDVI Index:</span>
-              <div className="flex items-center h-2.5 rounded overflow-hidden w-40 border border-slate-700">
+              <span className="font-medium text-slate-700">NDVI Index:</span>
+              <div className="flex items-center h-2.5 rounded overflow-hidden w-40 border border-slate-200">
                 <span className="w-1/4 h-full bg-[#a8a29e]" title="<0.2 Little or no vegetation"></span>
                 <span className="w-1/4 h-full bg-[#ef4444]" title="0.2 - 0.35 Potential vegetation stress"></span>
                 <span className="w-1/4 h-full bg-[#eab308]" title="0.35 - 0.55 Moderate"></span>

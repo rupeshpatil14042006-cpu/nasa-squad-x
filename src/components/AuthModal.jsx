@@ -15,7 +15,8 @@ import {
   loginWithEmail, 
   signupWithEmail, 
   loginWithGoogle, 
-  loginAsDemoFarmer 
+  loginAsDemoFarmer,
+  firebaseProjectInfo
 } from '../services/firebaseAuth';
 
 export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
@@ -93,7 +94,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
         </button>
 
         {/* Brand Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-5">
           <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-3 shadow-xs border border-emerald-100">
             <Leaf className="w-6 h-6 fill-emerald-600/30" />
           </div>
@@ -103,6 +104,23 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
           <p className="text-xs text-slate-500 mt-1">
             Firebase-authenticated agricultural telemetry & satellite insights
           </p>
+
+          {/* Connected Firebase Project Banner */}
+          <div className="mt-3 p-2.5 rounded-xl bg-emerald-50/80 border border-emerald-200 text-left text-[11px] space-y-1">
+            <div className="flex items-center justify-between text-emerald-800 font-bold">
+              <span className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Connected Firebase: {firebaseProjectInfo.projectName}
+              </span>
+              <span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px]">
+                Auto-linked
+              </span>
+            </div>
+            <div className="flex items-center justify-between text-slate-600 text-[10px] font-mono">
+              <span>Project ID: <b className="text-slate-900">{firebaseProjectInfo.projectId}</b></span>
+              <span>Number: <b className="text-slate-900">{firebaseProjectInfo.projectNumber}</b></span>
+            </div>
+          </div>
         </div>
 
         {/* Mode Switcher Tabs */}

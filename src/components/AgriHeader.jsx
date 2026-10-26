@@ -17,6 +17,7 @@ import {
   LogIn,
   ShieldCheck
 } from 'lucide-react';
+import { firebaseProjectInfo } from '../services/firebaseAuth';
 
 export default function AgriHeader({ 
   onMenuToggle,
@@ -77,6 +78,16 @@ export default function AgriHeader({
             <span className="hidden sm:inline">Mobile App</span>
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           </button>
+
+          {/* Firebase Auto-Connected Indicator */}
+          <div 
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800 shadow-xs" 
+            title={`Connected to Firebase: ${firebaseProjectInfo.projectName} (${firebaseProjectInfo.projectId})`}
+          >
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span>Firebase: <b className="font-mono text-emerald-900">{firebaseProjectInfo.projectId}</b></span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          </div>
 
           {/* Location Badge (quick field indicator) */}
           <div className="hidden lg:flex items-center gap-1.5 text-xs text-slate-600 bg-slate-100/80 px-3 py-1.5 rounded-xl border border-slate-200/60 font-medium">

@@ -64,49 +64,49 @@ export default function GitSyncModal({ isOpen, onClose, activeField, nasaData })
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
-      <div className="glass-panel-glow border border-slate-700 rounded-3xl max-w-2xl w-full p-6 space-y-5 max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
+      <div className="bg-white border border-slate-200 rounded-3xl max-w-2xl w-full p-6 space-y-5 max-h-[90vh] overflow-y-auto shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-100">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
               <FolderGit2 className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-slate-100 font-['Outfit']">
+              <h2 className="text-lg font-bold text-slate-900 font-['Outfit']">
                 GitHub Repository Synchronization
               </h2>
-              <p className="text-xs text-slate-400">
-                Connected Repository: <span className="text-cyan-300 font-mono text-[11px]">{repoUrl}</span>
+              <p className="text-xs text-slate-500">
+                Connected Repository: <span className="text-emerald-700 font-mono text-[11px] font-semibold">{repoUrl}</span>
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Remote Status Card */}
-        <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-3 text-xs">
+        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 text-xs">
           <div className="flex items-center justify-between">
-            <span className="text-slate-400">Git Remote Origin Status:</span>
-            <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
-              <CheckCircle2 className="w-4 h-4" /> Remote Configured & Linked
+            <span className="text-slate-500 font-medium">Git Remote Origin Status:</span>
+            <span className="flex items-center gap-1.5 text-emerald-700 font-bold">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" /> Remote Configured & Linked
             </span>
           </div>
 
-          <div className="flex items-center justify-between text-slate-300 pt-2 border-t border-slate-800">
-            <span>Branch: <b className="text-slate-100 font-mono">main</b></span>
-            <span>Remote: <b className="text-cyan-400 font-mono">origin</b></span>
+          <div className="flex items-center justify-between text-slate-600 pt-2 border-t border-slate-200">
+            <span>Branch: <b className="text-slate-900 font-mono">main</b></span>
+            <span>Remote: <b className="text-emerald-700 font-mono">origin</b></span>
             <a 
               href={repoUrl} 
               target="_blank" 
               rel="noreferrer"
-              className="text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-semibold"
+              className="text-emerald-700 hover:text-emerald-800 flex items-center gap-1 font-bold"
             >
               <span>Open on GitHub</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -117,35 +117,35 @@ export default function GitSyncModal({ isOpen, onClose, activeField, nasaData })
         {/* Ready to Push Snippet */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-bold text-slate-200 flex items-center gap-1.5">
-              <Terminal className="w-4 h-4 text-cyan-400" />
+            <span className="font-bold text-slate-700 flex items-center gap-1.5">
+              <Terminal className="w-4 h-4 text-emerald-600" />
               Terminal Push Command
             </span>
             <button
               onClick={copyCommand}
-              className="flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-semibold text-xs"
+              className="flex items-center gap-1 text-emerald-700 hover:text-emerald-800 font-semibold text-xs"
             >
               <Copy className="w-3.5 h-3.5" />
               <span>{copied ? "Copied!" : "Copy Snippet"}</span>
             </button>
           </div>
 
-          <div className="bg-slate-950 p-3.5 rounded-xl border border-slate-800 font-mono text-xs text-emerald-300 overflow-x-auto whitespace-pre">
+          <div className="bg-slate-900 p-3.5 rounded-xl border border-slate-800 font-mono text-xs text-emerald-400 overflow-x-auto whitespace-pre">
             {gitPushCommand}
           </div>
         </div>
 
         {/* Export Dossier Report */}
-        <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex items-center justify-between gap-4">
+        <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-400 shrink-0">
+            <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-700 shrink-0">
               <FileText className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-100">
+              <h4 className="text-sm font-bold text-slate-900">
                 Download Comprehensive Farm Report
               </h4>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500">
                 Full agronomic dossier with NASA stats, NDVI history, soil parameters, and 3-plan rotation simulation.
               </p>
             </div>
@@ -153,7 +153,7 @@ export default function GitSyncModal({ isOpen, onClose, activeField, nasaData })
 
           <button
             onClick={exportFarmReportJson}
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition-all shrink-0"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all shrink-0 shadow-sm"
           >
             <Download className="w-4 h-4" />
             <span>Export JSON</span>
@@ -164,7 +164,7 @@ export default function GitSyncModal({ isOpen, onClose, activeField, nasaData })
         <div className="flex justify-end pt-2">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold"
+            className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors"
           >
             Close
           </button>

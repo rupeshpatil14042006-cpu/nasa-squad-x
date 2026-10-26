@@ -77,7 +77,7 @@ export default function CropCard({
           onClick={handleAdd}
           className={`w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all duration-200 ${
             added 
-              ? 'bg-slate-900 text-white scale-105' 
+              ? 'bg-emerald-700 text-white scale-105' 
               : 'bg-[#22c55e] hover:bg-[#16a34a] text-white hover:scale-110 active:scale-95'
           }`}
           title={added ? "Added to rotation plan" : "Select crop for field"}

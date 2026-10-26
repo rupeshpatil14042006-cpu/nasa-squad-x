@@ -12,6 +12,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import LocationTracker from './LocationTracker';
+import { firebaseProjectInfo } from '../services/firebaseAuth';
 
 export default function SettingsView({ 
   currentLang, 
@@ -167,6 +168,19 @@ export default function SettingsView({
                 Connected
               </span>
             </div>
+
+            <div className="flex items-center justify-between p-3 rounded-xl bg-emerald-50/70 border border-emerald-200 text-xs">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <div>
+                  <span className="font-bold text-emerald-900 block">Firebase Cloud: {firebaseProjectInfo.projectName}</span>
+                  <span className="text-[10px] text-emerald-700 font-mono">App ID: {firebaseProjectInfo.appId}</span>
+                </div>
+              </div>
+              <span className="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-full">
+                Auto-Linked
+              </span>
+            </div>
           </div>
         </div>
 
@@ -188,9 +202,9 @@ export default function SettingsView({
 
           <button
             onClick={onOpenGitSync}
-            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs shadow-sm transition-all"
+            className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs shadow-sm transition-all"
           >
-            <GitBranch className="w-4 h-4 text-cyan-400" />
+            <GitBranch className="w-4 h-4 text-white" />
             <span>Open GitHub Sync Modal</span>
           </button>
         </div>

@@ -83,16 +83,16 @@ export default function LocationTracker({ onLocationDetected }) {
     : "";
 
   return (
-    <div className="mb-6 rounded-xl border border-emerald-900 bg-slate-900 p-5 text-white">
+    <div className="rounded-xl border border-slate-200 bg-white p-5 text-slate-800 shadow-xs">
 
-      <h2 className="mb-4 text-xl font-bold text-emerald-400">
-        Global Location Tracking
+      <h2 className="mb-3 text-sm font-bold text-slate-900 font-['Outfit']">
+        Global Location Tracking & NASA Climate Sync
       </h2>
 
       <button
         onClick={handleDetectLocation}
         disabled={loading}
-        className="rounded-lg bg-emerald-600 px-5 py-2 font-semibold text-white hover:bg-emerald-500 disabled:opacity-50"
+        className="rounded-xl bg-emerald-600 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-700 shadow-sm transition-all disabled:opacity-50"
       >
         {loading
           ? "Fetching location and NASA data..."
@@ -100,51 +100,51 @@ export default function LocationTracker({ onLocationDetected }) {
       </button>
 
       {location && (
-        <div className="mt-4 space-y-2">
+        <div className="mt-4 space-y-1.5 text-xs text-slate-700 bg-slate-50 p-3 rounded-lg border border-slate-200">
           <p>
-            <strong>Latitude:</strong>{" "}
+            <strong className="text-slate-900">Latitude:</strong>{" "}
             {location.latitude.toFixed(4)}
           </p>
 
           <p>
-            <strong>Longitude:</strong>{" "}
+            <strong className="text-slate-900">Longitude:</strong>{" "}
             {location.longitude.toFixed(4)}
           </p>
 
           <p>
-            <strong>Nearby Location:</strong>{" "}
+            <strong className="text-slate-900">Nearby Location:</strong>{" "}
             {locationName || "Location name unavailable"}
           </p>
         </div>
       )}
 
       {climate && (
-        <div className="mt-5 rounded-lg bg-slate-800 p-4">
-          <h3 className="mb-3 font-bold text-emerald-300">
+        <div className="mt-4 rounded-xl bg-emerald-50/70 border border-emerald-200 p-4 text-xs text-slate-800 space-y-1">
+          <h3 className="mb-2 font-bold text-emerald-800">
             NASA Environmental Data
           </h3>
 
           <p>
-            Temperature:{" "}
-            {climate.summary?.avg_temperature_c ?? "N/A"} °C
+            <span className="text-slate-600">Temperature:</span>{" "}
+            <b className="text-emerald-900">{climate.summary?.avg_temperature_c ?? "N/A"} °C</b>
           </p>
 
           <p>
-            Rainfall:{" "}
-            {climate.summary?.total_rainfall_mm ?? "N/A"} mm
+            <span className="text-slate-600">Rainfall:</span>{" "}
+            <b className="text-cyan-800">{climate.summary?.total_rainfall_mm ?? "N/A"} mm</b>
           </p>
 
           <p>
-            Humidity:{" "}
-            {climate.summary?.avg_humidity_percent ?? "N/A"}%
+            <span className="text-slate-600">Humidity:</span>{" "}
+            <b className="text-emerald-900">{climate.summary?.avg_humidity_percent ?? "N/A"}%</b>
           </p>
 
-          <p className="mt-2 text-sm text-slate-400">
+          <p className="mt-2 text-[11px] text-slate-500">
             Period: {climate.period?.start ?? "N/A"} to{" "}
             {climate.period?.end ?? "N/A"}
           </p>
           {climate.quality_warnings?.map((warning) => (
-            <p key={warning} role="status" className="mt-2 text-sm text-amber-300">
+            <p key={warning} role="status" className="mt-2 text-xs text-amber-800 bg-amber-50 p-2 rounded border border-amber-200">
               {warning}
             </p>
           ))}
@@ -152,12 +152,12 @@ export default function LocationTracker({ onLocationDetected }) {
       )}
 
       {error && (
-        <p className="mt-4 text-red-400">
+        <p className="mt-3 text-xs text-rose-600 font-medium">
           {error}
         </p>
       )}
 
-      <p className="mt-4 text-xs text-slate-500">
+      <p className="mt-3 text-[11px] text-slate-400">
         Temperature and humidity: NASA POWER. Rainfall: Open-Meteo.
         Location names: © OpenStreetMap contributors.
       </p>

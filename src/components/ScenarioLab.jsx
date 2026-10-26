@@ -60,43 +60,43 @@ export default function ScenarioLab({ activeField, currentLang }) {
   return (
     <div className="space-y-6">
       {/* 1. Header Banner */}
-      <div className="glass-panel p-5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="p-2 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
+            <span className="p-2 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
               <FlaskConical className="w-5 h-5" />
             </span>
-            <h2 className="text-lg font-bold text-slate-100 font-['Outfit']">
+            <h2 className="text-lg font-bold text-slate-900 font-['Outfit']">
               What-If Climate Scenario Simulator
             </h2>
           </div>
-          <p className="text-xs text-slate-400 mt-1 max-w-2xl">
+          <p className="text-xs text-slate-500 mt-1 max-w-2xl">
             Stress-test your farm against extreme climate disruptions: drought, abnormal heatwaves, and restricted canal/groundwater irrigation.
           </p>
         </div>
 
         {/* Disclaimer Tag */}
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-400 max-w-xs">
-          <Info className="w-4 h-4 text-cyan-400 shrink-0" />
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-600 max-w-xs">
+          <Info className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>Exploratory sensitivity analysis (not a weather forecast prediction).</span>
         </div>
       </div>
 
       {/* 2. Interactive Scenario Sliders */}
-      <div className="glass-panel-glow p-5 rounded-2xl space-y-5">
-        <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider">
+      <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-5">
+        <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
           Configure Simulated Climate Stress Variables:
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Slider 1: Rainfall Anomaly */}
-          <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-slate-200 flex items-center gap-1.5">
-                <CloudRain className="w-4 h-4 text-cyan-400" />
+              <span className="font-semibold text-slate-800 flex items-center gap-1.5">
+                <CloudRain className="w-4 h-4 text-cyan-600" />
                 Rainfall Anomaly
               </span>
-              <span className={`font-black text-sm ${rainfallAnomalyPercent < 0 ? 'text-rose-400' : 'text-emerald-400'}`}>
+              <span className={`font-black text-sm ${rainfallAnomalyPercent < 0 ? 'text-rose-600' : 'text-emerald-700'}`}>
                 {rainfallAnomalyPercent > 0 ? `+${rainfallAnomalyPercent}%` : `${rainfallAnomalyPercent}%`}
               </span>
             </div>
@@ -107,9 +107,9 @@ export default function ScenarioLab({ activeField, currentLang }) {
               step="5"
               value={rainfallAnomalyPercent}
               onChange={(e) => setRainfallAnomalyPercent(Number(e.target.value))}
-              className="w-full accent-cyan-500 h-2 bg-slate-800 rounded-lg cursor-pointer"
+              className="w-full accent-emerald-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] text-slate-500">
+            <div className="flex justify-between text-[10px] text-slate-500 font-medium">
               <span>-50% Drought</span>
               <span>Normal</span>
               <span>+50% Excess</span>
@@ -117,13 +117,13 @@ export default function ScenarioLab({ activeField, currentLang }) {
           </div>
 
           {/* Slider 2: Temperature Offset */}
-          <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-slate-200 flex items-center gap-1.5">
-                <Thermometer className="w-4 h-4 text-amber-400" />
+              <span className="font-semibold text-slate-800 flex items-center gap-1.5">
+                <Thermometer className="w-4 h-4 text-amber-600" />
                 Temperature Increase
               </span>
-              <span className="font-black text-sm text-amber-400">
+              <span className="font-black text-sm text-amber-600">
                 +{tempIncreaseC}°C
               </span>
             </div>
@@ -134,9 +134,9 @@ export default function ScenarioLab({ activeField, currentLang }) {
               step="0.5"
               value={tempIncreaseC}
               onChange={(e) => setTempIncreaseC(Number(e.target.value))}
-              className="w-full accent-amber-500 h-2 bg-slate-800 rounded-lg cursor-pointer"
+              className="w-full accent-amber-500 h-2 bg-slate-200 rounded-lg cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] text-slate-500">
+            <div className="flex justify-between text-[10px] text-slate-500 font-medium">
               <span>0°C (Baseline)</span>
               <span>+2°C (Moderate)</span>
               <span>+4°C (Extreme)</span>
@@ -144,13 +144,13 @@ export default function ScenarioLab({ activeField, currentLang }) {
           </div>
 
           {/* Slider 3: Irrigation Availability */}
-          <div className="bg-slate-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-semibold text-slate-200 flex items-center gap-1.5">
-                <Droplet className="w-4 h-4 text-teal-400" />
+              <span className="font-semibold text-slate-800 flex items-center gap-1.5">
+                <Droplet className="w-4 h-4 text-teal-600" />
                 Irrigation Available
               </span>
-              <span className={`font-black text-sm ${irrigationAvailablePercent < 50 ? 'text-rose-400' : 'text-teal-400'}`}>
+              <span className={`font-black text-sm ${irrigationAvailablePercent < 50 ? 'text-rose-600' : 'text-teal-700'}`}>
                 {irrigationAvailablePercent}%
               </span>
             </div>
@@ -161,9 +161,9 @@ export default function ScenarioLab({ activeField, currentLang }) {
               step="10"
               value={irrigationAvailablePercent}
               onChange={(e) => setIrrigationAvailablePercent(Number(e.target.value))}
-              className="w-full accent-teal-500 h-2 bg-slate-800 rounded-lg cursor-pointer"
+              className="w-full accent-teal-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] text-slate-500">
+            <div className="flex justify-between text-[10px] text-slate-500 font-medium">
               <span>20% (Severely Capped)</span>
               <span>60%</span>
               <span>100% (Full Supply)</span>
@@ -175,64 +175,64 @@ export default function ScenarioLab({ activeField, currentLang }) {
       {/* 3. Simulated Impact on Current Crop */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Stress Index */}
-        <div className="glass-panel p-4 rounded-xl space-y-1">
-          <p className="text-xs text-slate-400">Simulated Crop Stress Index</p>
+        <div className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-sm space-y-1">
+          <p className="text-xs text-slate-500 font-medium">Simulated Crop Stress Index</p>
           <div className="flex items-baseline gap-2">
             <span className={`text-3xl font-black font-['Outfit'] ${
-              combinedStressIndex >= 60 ? 'text-rose-400' :
-              combinedStressIndex >= 30 ? 'text-amber-400' : 'text-emerald-400'
+              combinedStressIndex >= 60 ? 'text-rose-600' :
+              combinedStressIndex >= 30 ? 'text-amber-600' : 'text-emerald-700'
             }`}>
               {combinedStressIndex}%
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-500">
               {combinedStressIndex >= 60 ? 'Severe Vulnerability' : combinedStressIndex >= 30 ? 'Moderate Strain' : 'Low Stress'}
             </span>
           </div>
-          <p className="text-[11px] text-slate-400 mt-1">
+          <p className="text-[11px] text-slate-500 mt-1">
             Thermal + Soil moisture deficit combined
           </p>
         </div>
 
         {/* Projected Yield Impact */}
-        <div className="glass-panel p-4 rounded-xl space-y-1">
-          <p className="text-xs text-slate-400">Projected Yield Impact on {currentCrop.name}</p>
+        <div className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-sm space-y-1">
+          <p className="text-xs text-slate-500 font-medium">Projected Yield Impact on {currentCrop.name}</p>
           <div className="flex items-baseline gap-2">
             <span className={`text-3xl font-black font-['Outfit'] flex items-center ${
-              projectedYieldChange < 0 ? 'text-rose-400' : 'text-emerald-400'
+              projectedYieldChange < 0 ? 'text-rose-600' : 'text-emerald-700'
             }`}>
               {projectedYieldChange}%
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs text-slate-500">
               {projectedYieldChange < -30 ? 'High Production Loss' : 'Tolerable Decline'}
             </span>
           </div>
-          <p className="text-[11px] text-slate-400 mt-1">
+          <p className="text-[11px] text-slate-500 mt-1">
             Baseline expected yield: {currentCrop.avgYieldQuintalPerAcre} q/acre
           </p>
         </div>
 
         {/* Action Strategy */}
-        <div className="glass-panel p-4 rounded-xl space-y-1">
-          <p className="text-xs text-slate-400">Recommended Adaptation Strategy</p>
-          <p className="text-sm font-bold text-slate-200 mt-1">
+        <div className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-sm space-y-1">
+          <p className="text-xs text-slate-500 font-medium">Recommended Adaptation Strategy</p>
+          <p className="text-sm font-bold text-slate-900 mt-1">
             {combinedStressIndex >= 50 
               ? "Transition immediately to drought-hardy Millets or short-cycle Pulses" 
               : "Apply organic straw mulch and advance sowing by 8 days"}
           </p>
-          <p className="text-[11px] text-emerald-400 font-medium mt-1">
+          <p className="text-[11px] text-emerald-700 font-semibold mt-1">
             Preserves 22% subsoil moisture from evaporation
           </p>
         </div>
       </div>
 
       {/* 4. Dynamically Ranked Resilient Crops Under This Scenario */}
-      <div className="glass-panel p-5 rounded-2xl space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+      <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
           <div>
-            <h3 className="text-sm font-bold text-slate-100 font-['Outfit']">
+            <h3 className="text-sm font-bold text-slate-900 font-['Outfit']">
               Ranked Crop Resilience Under Current What-If Scenario
             </h3>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500">
               Which crops maintain highest viability under Rainfall: {rainfallAnomalyPercent}%, Temp: +{tempIncreaseC}°C, Irrigation: {irrigationAvailablePercent}%
             </p>
           </div>
@@ -242,36 +242,36 @@ export default function ScenarioLab({ activeField, currentLang }) {
           {rankedResilientCrops.slice(0, 4).map((crop, idx) => (
             <div 
               key={crop.id}
-              className="bg-slate-900/90 border border-slate-800 rounded-xl p-4 space-y-3 relative overflow-hidden"
+              className="bg-white border border-slate-200 rounded-xl p-4 space-y-3 relative overflow-hidden shadow-xs hover:border-emerald-300 transition-all"
             >
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
                   Rank #{idx + 1} Choice
                 </span>
-                <span className="text-xs font-black text-emerald-400">
+                <span className="text-xs font-black text-emerald-700">
                   {crop.simulatedScore}/100 Fit
                 </span>
               </div>
 
               <div>
-                <h4 className="text-base font-bold text-slate-100 font-['Outfit']">
+                <h4 className="text-base font-bold text-slate-900 font-['Outfit']">
                   {crop.name}
                 </h4>
-                <p className="text-[11px] text-slate-400">{crop.category} • {crop.durationDays} Days</p>
+                <p className="text-[11px] text-slate-500">{crop.category} • {crop.durationDays} Days</p>
               </div>
 
-              <div className="p-2 rounded-lg bg-slate-950 text-xs text-slate-300 space-y-1">
+              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-1">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Water Need:</span>
-                  <span className="text-cyan-300 font-semibold">{crop.waterDemandMm} mm</span>
+                  <span className="text-slate-500">Water Need:</span>
+                  <span className="text-cyan-700 font-semibold">{crop.waterDemandMm} mm</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Max Temp Limit:</span>
-                  <span className="text-amber-300 font-semibold">{crop.tempRange[1]}°C</span>
+                  <span className="text-slate-500">Max Temp Limit:</span>
+                  <span className="text-amber-700 font-semibold">{crop.tempRange[1]}°C</span>
                 </div>
               </div>
 
-              <p className="text-[11px] text-slate-300 line-clamp-2">
+              <p className="text-[11px] text-slate-600 line-clamp-2">
                 {crop.benefits}
               </p>
             </div>
