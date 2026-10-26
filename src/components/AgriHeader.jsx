@@ -16,7 +16,8 @@ import {
   LogOut,
   LogIn,
   ShieldCheck,
-  Blocks
+  Blocks,
+  Download
 } from 'lucide-react';
 import { firebaseProjectInfo } from '../services/firebaseAuth';
 
@@ -79,6 +80,18 @@ export default function AgriHeader({
             <span className="hidden sm:inline">Mobile App</span>
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
           </button>
+
+          {/* Direct Android APK Download Button */}
+          <a
+            href="/AgriSmart-Kisan-v2.6.apk"
+            download="AgriSmart-Kisan-v2.6.apk"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all shadow-xs hover:scale-102"
+            title="Download Native Android APK (10.0 MB)"
+          >
+            <Download className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Download APK</span>
+            <span className="text-[9px] font-mono font-bold text-emerald-300 bg-emerald-950 px-1 py-0.2 rounded border border-emerald-800/60">v2.6</span>
+          </a>
 
           {/* Firebase Auto-Connected Indicator */}
           <div 

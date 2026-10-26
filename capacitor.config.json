@@ -1,0 +1,13 @@
+{
+  "appId": "com.agrismart.squadx",
+  "appName": "AgriSmart Kisan",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": true
+  }
+}
