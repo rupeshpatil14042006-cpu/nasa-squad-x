@@ -10,14 +10,22 @@ import {
   updateProfile
 } from 'firebase/auth';
 
-// Firebase configuration from environment or fallback template
+// Firebase configuration from environment or project nasa-squadx
+export const firebaseProjectInfo = {
+  projectId: "nasa-squadx",
+  projectName: "Nasa-squadx",
+  projectNumber: "626146678826",
+  appNickname: "nasa-squad-x",
+  appId: "1:626146678826:web:6fc534435ca9da50414b53"
+};
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyDemoAgriSmartKey1234567890",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "agrismart-fieldshift.firebaseapp.com",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "agrismart-fieldshift",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "agrismart-fieldshift.appspot.com",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "123456789012",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:123456789012:web:demo123456789"
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "nasa-squadx.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "nasa-squadx",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "nasa-squadx.firebasestorage.app",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "626146678826",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:626146678826:web:6fc534435ca9da50414b53"
 };
 
 // Check if valid user-provided Firebase key exists

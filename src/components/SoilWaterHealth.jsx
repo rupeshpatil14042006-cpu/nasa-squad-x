@@ -112,14 +112,14 @@ export default function SoilWaterHealth({
       <div className="glass-panel p-5 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="p-2 rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20">
+            <span className="p-2 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200">
               <FlaskConical className="w-5 h-5" />
             </span>
-            <h2 className="text-lg font-bold text-slate-100 font-['Outfit']">
+            <h2 className="text-lg font-bold text-slate-900 font-['Outfit']">
               Soil Health Diagnostics & Water Budget Calculator
             </h2>
           </div>
-          <p className="text-xs text-slate-400 mt-1 max-w-2xl">
+          <p className="text-xs text-slate-500 mt-1 max-w-2xl">
             {hasLocationData
               ? isPointEstimate
               ? "GPS-point SoilGrids, Copernicus DEM, and Open-Meteo historical estimates. SoilGrids uses the nearest valid 250 m pixel; these are not field-boundary averages or sensor readings."
@@ -134,7 +134,7 @@ export default function SoilWaterHealth({
 
         {/* Source Badge Legend */}
         <div className="flex flex-wrap items-center gap-2 text-xs">
-          <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] font-bold">
+          <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 text-[11px] font-bold">
             {hasLocationData
               ? isPointEstimate
                 ? "GPS point estimate · SoilGrids ~250 m · DEM ~90 m"
@@ -151,34 +151,34 @@ export default function SoilWaterHealth({
       </div>
 
       {isCurrentFieldLoading && (
-        <p role="status" className="rounded-lg border border-cyan-500/30 bg-cyan-950/30 px-4 py-3 text-xs text-cyan-200">
+        <p role="status" className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs text-emerald-800">
           {hasDrawnBoundary
             ? "Fetching SoilGrids soil properties, Copernicus DEM terrain, and Open-Meteo soil-water estimates for this boundary..."
             : "Fetching SoilGrids, Copernicus DEM, and Open-Meteo estimates for the selected location..."}
         </p>
       )}
       {isCurrentFieldData && soilWaterData.error && (
-        <p role="alert" className="rounded-lg border border-rose-500/30 bg-rose-950/30 px-4 py-3 text-xs text-rose-200">
+        <p role="alert" className="rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-xs text-rose-800">
           {soilWaterData.error}
         </p>
       )}
       {[...(liveSoil?.warnings || []), ...(liveWater?.warnings || [])].map((warning) => (
-        <p key={warning} role="status" className="rounded-lg border border-amber-500/30 bg-amber-950/30 px-4 py-3 text-xs text-amber-200">
+        <p key={warning} role="status" className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-800">
           {warning}
         </p>
       ))}
 
       {/* 2. Dataset-backed soil profile */}
       <div className="glass-panel-glow p-5 rounded-2xl space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
           <div>
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-emerald-400" />
-              <h3 className="text-base font-bold text-slate-100 font-['Outfit']">
+              <ShieldCheck className="w-5 h-5 text-emerald-600" />
+              <h3 className="text-base font-bold text-slate-900 font-['Outfit']">
                 Field Soil Dataset Summary
               </h3>
             </div>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-500 mt-0.5">
               {hasSoilGridValues
                 ? isPointEstimate
                   ? "Values below use the nearest valid SoilGrids model pixel to the selected GPS point; they are not a field-area average or field sample."
@@ -197,7 +197,7 @@ export default function SoilWaterHealth({
             </p>
           </div>
 
-          <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
             {hasSoilGridValues
               ? "SoilGrids estimate · 250 m"
               : isDemoProfile ? "Demo example" : soilWaterData.loading ? "Fetching estimates" : hasLocationData ? "No data returned" : "Boundary data needed"}
@@ -211,9 +211,9 @@ export default function SoilWaterHealth({
             ["Clay", soilValue("clayPercent", null), "%"],
             ["Total nitrogen", soilValue("totalNitrogenGPerKg", null), " g/kg"],
           ].map(([label, value, unit]) => (
-            <div key={label} className="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-              <p className="text-slate-400">{label}</p>
-              <p className="text-lg font-bold text-slate-100 mt-1">
+            <div key={label} className="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
+              <p className="text-slate-500">{label}</p>
+              <p className="text-lg font-bold text-slate-900 mt-1">
                 {value == null
                   ? soilWaterData.loading ? "Loading..." : hasLocationData ? "Unavailable" : "Not supplied"
                   : `${value}${unit}`}
@@ -224,21 +224,21 @@ export default function SoilWaterHealth({
             </div>
           ))}
         </div>
-        <div className="rounded-lg border border-amber-500/30 bg-amber-950/20 p-4 space-y-3">
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-4 space-y-3">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h4 className="text-sm font-semibold text-amber-200">Soil management practice index</h4>
-              <p className="text-[11px] text-slate-300">
+              <h4 className="text-sm font-semibold text-emerald-900">Soil management practice index</h4>
+              <p className="text-[11px] text-slate-600">
                 An unvalidated adoption summary—not a soil recovery or soil-quality score. Unknown answers are excluded.
               </p>
             </div>
-            <span className="text-xl font-bold text-amber-100">
+            <span className="text-xl font-bold text-emerald-800">
               {practiceIndex ? `${practiceIndex.score}%` : "—"}
             </span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {SOIL_PRACTICES.map(({ id, label }) => (
-              <label key={id} className="text-xs text-slate-300 flex items-center justify-between gap-2">
+              <label key={id} className="text-xs text-slate-700 flex items-center justify-between gap-2">
                 <span>{label}</span>
                 <select
                   value={soilScreeningInputs.practices?.[id] == null
@@ -248,7 +248,7 @@ export default function SoilWaterHealth({
                     ...soilScreeningInputs.practices,
                     [id]: event.target.value === "" ? null : event.target.value === "yes",
                   })}
-                  className="rounded border border-slate-700 bg-slate-900 px-2 py-1"
+                  className="rounded-lg border border-slate-200 bg-white px-2 py-1 text-slate-800 shadow-2xs"
                   aria-label={label}
                 >
                   <option value="">Unknown</option>
@@ -258,7 +258,7 @@ export default function SoilWaterHealth({
               </label>
             ))}
           </div>
-          <p className="text-[11px] text-slate-400">
+          <p className="text-[11px] text-slate-500">
             {practiceIndex
               ? `${practiceIndex.adopted} of ${practiceIndex.recorded} recorded practices are used. Score = yes / known answers × 100. It does not measure soil recovery over time.`
               : "Record one or more practices to calculate the adoption index."}
@@ -268,12 +268,12 @@ export default function SoilWaterHealth({
 
       {/* 3. Multi-Source Soil Parameters Grid (Measured vs Estimated vs User) */}
       <div className="glass-panel p-5 rounded-2xl space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-200">
           <div>
-            <h3 className="text-sm font-bold text-slate-100 font-['Outfit']">
+            <h3 className="text-sm font-bold text-slate-900 font-['Outfit']">
               Complete Soil Nutrients & Physical Health Ledger
             </h3>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500">
               {soilTextureSummary}
             </p>
           </div>
@@ -281,85 +281,85 @@ export default function SoilWaterHealth({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Soil pH */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4 space-y-2">
+          <div className="bg-white border border-slate-200/90 hover:border-emerald-300 rounded-xl p-4 space-y-2 shadow-xs transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-400">Soil Reaction (pH, 0-5 cm)</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">
+              <span className="text-xs text-slate-600 font-medium">Soil Reaction (pH, 0-5 cm)</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">
                 {soilSourceLabel}
               </span>
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-black text-slate-100 font-['Outfit']">
+              <span className="text-2xl font-black text-slate-900 font-['Outfit']">
                 {soilValue("ph", activeField.soilIndicators.ph.value) ?? "Not available"}
               </span>
-              <span className="text-xs text-emerald-400 font-semibold">
+              <span className="text-xs text-emerald-700 font-semibold">
                 {isDemoProfile ? activeField.soilIndicators.ph.label : hasSoilGridValues ? "Predicted pH; confirm with a soil test" : "No SoilGrids pixel available"}
               </span>
             </div>
-            <p className="text-[11px] text-slate-400">Interpretation depends on crop and local conditions; confirm with a laboratory soil test.</p>
+            <p className="text-[11px] text-slate-500">Interpretation depends on crop and local conditions; confirm with a laboratory soil test.</p>
           </div>
 
           {/* Soil Organic Carbon */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4 space-y-2">
+          <div className="bg-white border border-slate-200/90 hover:border-emerald-300 rounded-xl p-4 space-y-2 shadow-xs transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-400">Organic Carbon (SOC)</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">
+              <span className="text-xs text-slate-600 font-medium">Organic Carbon (SOC)</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">
                 {soilSourceLabel}
               </span>
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-black text-amber-400 font-['Outfit']">
+              <span className="text-2xl font-black text-emerald-700 font-['Outfit']">
                 {soilValue("organicCarbonPercent", activeField.soilIndicators.organicCarbonPercent.value) != null
                   ? `${soilValue("organicCarbonPercent", activeField.soilIndicators.organicCarbonPercent.value)}%`
                   : "Not available"}
               </span>
-              <span className="text-xs text-amber-300 font-semibold">
+              <span className="text-xs text-emerald-800 font-semibold">
                 {isDemoProfile ? activeField.soilIndicators.organicCarbonPercent.label : hasSoilGridValues ? "Predicted organic carbon" : "No SoilGrids pixel available"}
               </span>
             </div>
-            <p className="text-[11px] text-slate-400">Regional model estimate only; use a laboratory test before making soil amendments.</p>
+            <p className="text-[11px] text-slate-500">Regional model estimate only; use a laboratory test before making soil amendments.</p>
           </div>
 
           {/* Total Nitrogen */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4 space-y-2">
+          <div className="bg-white border border-slate-200/90 hover:border-emerald-300 rounded-xl p-4 space-y-2 shadow-xs transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-400">{hasSoilGridValues ? "Total Nitrogen (0-5 cm)" : "Available Nitrogen (N)"}</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">
+              <span className="text-xs text-slate-600 font-medium">{hasSoilGridValues ? "Total Nitrogen (0-5 cm)" : "Available Nitrogen (N)"}</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">
                 {soilSourceLabel}
               </span>
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-black text-rose-400 font-['Outfit']">
+              <span className="text-2xl font-black text-emerald-700 font-['Outfit']">
                 {hasSoilGridValues
                   ? soilProperties.totalNitrogenGPerKg?.value ?? "Not available"
                   : isDemoProfile ? activeField.soilIndicators.availableNitrogenKgHa.value : "Not available"}
               </span>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-slate-500">
                 {hasSoilGridValues
                   ? "g/kg predicted total N; not plant-available N"
                   : `kg/ha (${isDemoProfile ? activeField.soilIndicators.availableNitrogenKgHa.label : "No soil test supplied"})`}
               </span>
             </div>
-            <p className="text-[11px] text-slate-400">Total soil nitrogen is not plant-available nitrogen; a soil test is needed for fertilizer planning.</p>
+            <p className="text-[11px] text-slate-500">Total soil nitrogen is not plant-available nitrogen; a soil test is needed for fertilizer planning.</p>
           </div>
 
           {/* Satellite Soil Moisture Proxy */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4 space-y-2">
+          <div className="bg-white border border-slate-200/90 hover:border-emerald-300 rounded-xl p-4 space-y-2 shadow-xs transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-400">Root-Zone Soil Moisture</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30">
+              <span className="text-xs text-slate-600 font-medium">Root-Zone Soil Moisture</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">
                 {rootZoneMoisture != null ? "Open-Meteo estimate · ~9 km" : isDemoProfile ? "Demo example" : "Unavailable"}
               </span>
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-black text-cyan-400 font-['Outfit']">
+              <span className="text-2xl font-black text-emerald-700 font-['Outfit']">
                 {rootZoneMoisture != null
                   ? `${(rootZoneMoisture * 100).toFixed(1)}%`
                   : isDemoProfile ? `${activeField.soilIndicators.satelliteSoilMoistureIndex.value * 100}%` : "Not available"}
               </span>
-              <span className="text-xs text-cyan-300 font-semibold">Volumetric water · 7-28 cm</span>
+              <span className="text-xs text-emerald-800 font-semibold">Volumetric water · 7-28 cm</span>
             </div>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-slate-500">
               {liveWater?.soilMoistureAsOf
                 ? `${liveWater.soilMoistureSampleCounts?.["7-28 cm"] ?? 0} hourly Open-Meteo reanalysis samples ending ${(liveWater.soilMoistureWindowEnd ?? liveWater.soilMoistureAsOf).replace("T", " ")}; not a field sensor.`
                 : "Model estimate; not a field sensor measurement."}
@@ -367,17 +367,17 @@ export default function SoilWaterHealth({
           </div>
 
           {/* Terrain context for erosion */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4 space-y-2">
+          <div className="bg-white border border-slate-200/90 hover:border-emerald-300 rounded-xl p-4 space-y-2 shadow-xs transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-400">Terrain Relief (erosion context)</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30">
+              <span className="text-xs text-slate-600 font-medium">Terrain Relief (erosion context)</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">
                 {terrain?.elevationRangeMeters || terrainElevation != null
                   ? "Copernicus DEM · 90 m"
                   : isDemoProfile ? "Demo example" : soilWaterData.loading ? "Loading DEM" : "Boundary data needed"}
               </span>
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-black text-emerald-400 font-['Outfit']">
+              <span className="text-2xl font-black text-emerald-700 font-['Outfit']">
                 {terrainRelief != null
                   ? `${terrainRelief.toFixed(1)} m`
                   : terrainElevation != null
@@ -386,13 +386,13 @@ export default function SoilWaterHealth({
                     ? activeField.soilIndicators.erosionRiskLevel.value
                     : soilWaterData.loading ? "Loading..." : hasDrawnBoundary ? "Unavailable" : "Draw boundary"}
               </span>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-slate-500">
                 {terrainRelief != null
                   ? "sampled elevation range"
                   : terrainElevation != null ? "GPS point elevation" : isDemoProfile ? "preset example" : "DEM elevation"}
               </span>
             </div>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-slate-500">
               {terrain?.elevationRangeMeters
                 ? `${terrain.sampleCount} DEM samples, ${terrain.elevationRangeMeters.minimum}-${terrain.elevationRangeMeters.maximum} m elevation. Terrain context only; not a soil-loss or erosion-risk model.`
                 : terrainElevation != null
@@ -400,7 +400,7 @@ export default function SoilWaterHealth({
                 : isDemoProfile ? "Preset example only; no boundary DEM was sampled." : terrain?.warnings?.[0] ?? "Draw a boundary to sample terrain elevation."}
             </p>
             <div className="grid grid-cols-2 gap-2 pt-2">
-              <label className="text-[11px] text-slate-300">
+              <label className="text-[11px] text-slate-700 font-medium">
                 Slope (%; enter field value)
                 <input
                   type="number"
@@ -412,10 +412,10 @@ export default function SoilWaterHealth({
                     "slopePercent",
                     event.target.value === "" ? null : Number(event.target.value),
                   )}
-                  className="mt-1 w-full rounded border border-slate-700 bg-slate-950 px-2 py-1 text-slate-100"
+                  className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-2 py-1 text-slate-800 shadow-2xs"
                 />
               </label>
-              <label className="text-[11px] text-slate-300">
+              <label className="text-[11px] text-slate-700 font-medium">
                 Ground cover (%; field estimate)
                 <input
                   type="number"
@@ -427,51 +427,51 @@ export default function SoilWaterHealth({
                     "groundCoverPercent",
                     event.target.value === "" ? null : Number(event.target.value),
                   )}
-                  className="mt-1 w-full rounded border border-slate-700 bg-slate-950 px-2 py-1 text-slate-100"
+                  className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-2 py-1 text-slate-800 shadow-2xs"
                 />
               </label>
             </div>
-            <div className="rounded bg-slate-950/80 p-2 text-[11px] text-slate-300">
-              <span className="font-semibold">90-day erosion exposure screen: </span>
+            <div className="rounded-lg bg-slate-50 p-2.5 text-[11px] text-slate-700 border border-slate-200/80">
+              <span className="font-semibold text-slate-900">90-day erosion exposure screen: </span>
               {erosionIndex
                 ? `${erosionIndex.score}/100 (unvalidated relative index)`
                 : "Enter slope and ground cover; complete 90-day rainfall data is also required."}
-              <p className="mt-1 text-slate-400">
+              <p className="mt-1 text-slate-500">
                 Formula: 40% slope exposure (capped at 15%), 35% bare-ground fraction, 25% recent rainfall exposure (capped at 500 mm/90 days). Not RUSLE, predicted soil loss, or a validated risk classification.
               </p>
             </div>
           </div>
 
           {/* Subsoil bulk-density proxy */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4 space-y-2">
+          <div className="bg-white border border-slate-200/90 hover:border-emerald-300 rounded-xl p-4 space-y-2 shadow-xs transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-slate-600 font-medium">
                 {isDemoProfile && bulkDensity == null ? "Preset Compaction Example" : "Subsoil Bulk Density"}
               </span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-300">
                 {bulkDensity != null
                   ? "SoilGrids · 250 m"
                   : isDemoProfile ? "Demo example" : soilWaterData.loading ? "Loading soil data" : "Boundary data needed"}
               </span>
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-black text-amber-400 font-['Outfit']">
+              <span className="text-2xl font-black text-emerald-700 font-['Outfit']">
                 {bulkDensity != null
                   ? `${bulkDensity.toFixed(2)} g/cm³`
                   : isDemoProfile
                     ? activeField.soilIndicators.compactionRisk.value
                     : soilWaterData.loading ? "Loading..." : hasDrawnBoundary ? "Unavailable" : "Draw boundary"}
               </span>
-              <span className="text-xs text-amber-300">
+              <span className="text-xs text-emerald-800">
                 {bulkDensity != null ? soilProperties.bulkDensityGPerCm3.depth : isDemoProfile ? "Preset example" : "DEM depth"}
               </span>
             </div>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-slate-500">
               {bulkDensity != null
                 ? `Modeled bulk-density proxy${isPointEstimate && bulkDensityEstimate?.distanceFromPointMeters != null ? `; nearest valid pixel is about ${bulkDensityEstimate.distanceFromPointMeters} m from the GPS point` : ""}. It does not confirm a compacted layer; use a field penetrometer or core test for diagnosis.`
                 : isDemoProfile ? activeField.soilIndicators.compactionRisk.label : soilProperties ? "No bulk-density estimate returned for this boundary." : soilWaterData.loading ? "Fetching the 15-30 cm bulk-density estimate." : soilWaterData.error || "Draw a boundary to fetch the modeled subsoil estimate."}
             </p>
-            <label className="block text-[11px] text-slate-300">
+            <label className="block text-[11px] text-slate-700 font-medium">
               Optional penetrometer reading (MPa)
               <input
                 type="number"
@@ -483,11 +483,11 @@ export default function SoilWaterHealth({
                   "penetrationResistanceMpa",
                   event.target.value === "" ? null : Number(event.target.value),
                 )}
-                className="mt-1 w-full rounded border border-slate-700 bg-slate-950 px-2 py-1 text-slate-100"
+                className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-2 py-1 text-slate-800 shadow-2xs"
               />
             </label>
             {Number.isFinite(soilScreeningInputs.penetrationResistanceMpa) && (
-              <p className="text-[11px] text-slate-300">
+              <p className="text-[11px] text-slate-600">
                 Recorded reading: {soilScreeningInputs.penetrationResistanceMpa.toFixed(2)} MPa.
                 {soilScreeningInputs.penetrationResistanceMpa >= 2
                   ? " This may restrict roots in some crops/conditions; confirm at field capacity and across multiple points."
@@ -500,38 +500,38 @@ export default function SoilWaterHealth({
 
       {/* 4. Historical Water Conditions and Crop-Demand Context */}
       <div className="glass-panel p-5 rounded-2xl space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
           <div>
             <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+              <span className="p-1.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
                 <Droplet className="w-4 h-4" />
               </span>
-              <h3 className="text-base font-bold text-slate-100 font-['Outfit']">
+              <h3 className="text-base font-bold text-slate-900 font-['Outfit']">
                 Historical Water Conditions & Crop-Demand Context
               </h3>
             </div>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-500 mt-0.5">
               Historical soil-water context plus a seven-day crop evapotranspiration estimate from forecast ET₀. ETc is not an irrigation prescription.
             </p>
           </div>
 
           <div className="text-right text-xs">
-            <span className="text-slate-400">Current Crop:</span>
-            <span className="font-bold text-slate-100 ml-1 capitalize">{activeCrop?.name ?? "Not selected"}</span>
+            <span className="text-slate-500">Current Crop:</span>
+            <span className="font-bold text-slate-900 ml-1 capitalize">{activeCrop?.name ?? "Not selected"}</span>
           </div>
         </div>
 
         {/* Historical weather and forecast crop-demand estimate */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
           {/* Crop demand estimate */}
-          <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800/80">
-            <p className="text-slate-400">Catalog Seasonal Water Reference</p>
-            <p className="text-2xl font-black text-cyan-300 font-['Outfit'] mt-1">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+            <p className="text-slate-500 font-medium">Catalog Seasonal Water Reference</p>
+            <p className="text-2xl font-black text-emerald-700 font-['Outfit'] mt-1">
               {baseWaterDemand == null
                 ? `${cropDemandRange.minimum}-${cropDemandRange.maximum} mm`
                 : `${baseWaterDemand} mm`}
             </p>
-            <label className="block mt-2 text-[11px] text-slate-400" htmlFor="soil-water-crop">
+            <label className="block mt-2 text-[11px] text-slate-600 font-medium" htmlFor="soil-water-crop">
               Catalog crop
             </label>
             <select
@@ -542,19 +542,19 @@ export default function SoilWaterHealth({
                 setCropDemand(null);
                 setCropDemandError('');
               }}
-              className="mt-1 w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-xs text-slate-100"
+              className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-xs text-slate-800 shadow-2xs"
             >
               <option value="">All catalog crops (range)</option>
               {cropOptions.map((crop) => (
                 <option key={crop.id} value={crop.id}>{crop.name}</option>
               ))}
             </select>
-            <p className="text-[11px] text-slate-400 mt-0.5">
+            <p className="text-[11px] text-slate-500 mt-0.5">
               {activeCrop
                 ? `${activeCrop.name} is a catalog reference for the full growing season.`
                 : `Catalog range across ${cropOptions.length} crops; select a crop to estimate daily crop evapotranspiration.`}
             </p>
-            <label className="block mt-3 text-[11px] text-slate-400">
+            <label className="block mt-3 text-[11px] text-slate-600 font-medium">
               Planting date (used to estimate crop stage)
               <input
                 type="date"
@@ -564,34 +564,34 @@ export default function SoilWaterHealth({
                   setCropDemand(null);
                   setCropDemandError('');
                 }}
-                className="mt-1 w-full rounded-md border border-slate-700 bg-slate-900 px-2 py-1.5 text-xs text-slate-100"
+                className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-xs text-slate-800 shadow-2xs"
               />
             </label>
             <button
               type="button"
               onClick={requestCropDemand}
               disabled={!activeCrop || cropDemandLoading}
-              className="mt-2 w-full rounded-md bg-cyan-700 px-3 py-2 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
+              className="mt-2.5 w-full rounded-lg bg-emerald-600 hover:bg-emerald-700 px-3 py-2 text-xs font-bold text-white transition-all shadow-xs disabled:cursor-not-allowed disabled:opacity-50"
             >
               {cropDemandLoading ? "Calculating forecast..." : "Estimate next 7 days"}
             </button>
-            {cropDemandError && <p role="alert" className="mt-2 text-[11px] text-rose-300">{cropDemandError}</p>}
+            {cropDemandError && <p role="alert" className="mt-2 text-[11px] text-rose-700 bg-rose-50 p-2 rounded-lg border border-rose-200">{cropDemandError}</p>}
             {currentCropDemand && (
-              <div className="mt-3 space-y-2 border-t border-slate-800 pt-2 text-[11px]">
-                <p className="font-semibold text-cyan-200">
+              <div className="mt-3 space-y-2 border-t border-slate-200 pt-2 text-[11px]">
+                <p className="font-semibold text-emerald-800">
                   {currentCropDemand.etcTotalMm == null
                     ? "ETc forecast unavailable"
                     : `${currentCropDemand.etcTotalMm} mm estimated ETc over ${currentCropDemand.etcCoveredDays} covered days`}
                 </p>
-                <div className="max-h-32 space-y-1 overflow-y-auto text-slate-300">
+                <div className="max-h-32 space-y-1 overflow-y-auto text-slate-700">
                   {currentCropDemand.forecast.map((day) => (
                     <div key={day.date} className="flex justify-between gap-2">
                       <span>{day.date} · {day.stage}</span>
-                      <span>{day.etcMm == null ? "ETc unavailable" : `${day.etcMm} mm`}</span>
+                      <span className="font-semibold text-emerald-700">{day.etcMm == null ? "ETc unavailable" : `${day.etcMm} mm`}</span>
                     </div>
                   ))}
                 </div>
-                <p className="text-slate-400">
+                <p className="text-slate-500">
                   {currentCropDemand.assumptions.join(" ")}
                 </p>
               </div>
@@ -599,14 +599,14 @@ export default function SoilWaterHealth({
           </div>
 
           {/* Total Available Supply */}
-          <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800/80">
-            <p className="text-slate-400">90-Day Historical Precipitation</p>
-            <p className="text-2xl font-black text-emerald-400 font-['Outfit'] mt-1">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+            <p className="text-slate-500 font-medium">90-Day Historical Precipitation</p>
+            <p className="text-2xl font-black text-emerald-700 font-['Outfit'] mt-1">
               {rainfallTotalMm == null
                 ? isCurrentFieldLoading ? "Loading..." : hasLocationData ? "Incomplete data" : "Loading location data..."
                 : `${rainfallTotalMm} mm`}
             </p>
-            <p className="text-[11px] text-slate-400 mt-0.5">
+            <p className="text-[11px] text-slate-500 mt-0.5">
               {liveWater?.period
                 ? `${liveWater.period.start} to ${liveWater.period.end} · Open-Meteo reanalysis · ${liveWater.rainfallCoverageDays ?? 0}/90 daily values`
                 : soilWaterData.loading
@@ -618,21 +618,21 @@ export default function SoilWaterHealth({
           </div>
 
           {/* Water Balance Gap */}
-          <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800/80">
-            <p className="text-slate-400">Recent Root-Zone Moisture</p>
-            <p className="text-2xl font-black text-cyan-300 font-['Outfit'] mt-1">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+            <p className="text-slate-500 font-medium">Recent Root-Zone Moisture</p>
+            <p className="text-2xl font-black text-emerald-700 font-['Outfit'] mt-1">
               {rootZoneMoisture == null
                 ? isCurrentFieldLoading ? "Loading..." : hasLocationData ? "Unavailable" : "Loading location data..."
                 : `${(rootZoneMoisture * 100).toFixed(1)}%`}
             </p>
-            <p className="text-[11px] text-slate-400 mt-0.5">
+            <p className="text-[11px] text-slate-500 mt-0.5">
               {liveWater?.soilMoistureAsOf
                 ? `${liveWater.soilMoistureSampleCounts?.["7-28 cm"] ?? 0} hourly modeled samples for 7-28 cm ending ${(liveWater.soilMoistureWindowEnd ?? liveWater.soilMoistureAsOf).replace("T", " ")}; not a sensor reading.`
                 : "Soil moisture unavailable without boundary data."}
             </p>
           </div>
         </div>
-        <p className="rounded-lg border border-slate-700 bg-slate-900/70 px-4 py-3 text-[11px] text-slate-300">
+        <p className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-[11px] text-slate-600">
           These values cannot be subtracted to estimate a water deficit: the crop-demand reference is seasonal, while rainfall covers the last 90 days. Irrigation, evapotranspiration, runoff, crop stage, and planting-date response are not modeled.
         </p>
       </div>
