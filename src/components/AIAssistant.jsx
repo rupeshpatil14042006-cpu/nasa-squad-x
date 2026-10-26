@@ -10,10 +10,13 @@ import {
   User, 
   HelpCircle,
   Lightbulb,
-  CheckCircle2
+  CheckCircle2,
+  ShieldCheck,
+  AlertOctagon
 } from 'lucide-react';
 import { translations } from '../data/translations';
 import { CROPS } from '../data/cropsData';
+import { sanitizeAndInspectQuery } from '../services/securityService';
 
 export default function AIAssistant({ activeField, currentLang, audioEnabled }) {
   const t = translations[currentLang] || translations.en;
@@ -104,18 +107,31 @@ export default function AIAssistant({ activeField, currentLang, audioEnabled }) 
   };
 
   const handleSendQuery = (customText) => {
-    const query = (customText || inputQuery).trim();
-    if (!query) return;
+    const raw = (customText || inputQuery).trim();
+    if (!raw) return;
 
+    // Security Inspection: AI Prompt Firewall & Sanitization (OWASP LLM01)
+    const inspection = sanitizeAndInspectQuery(raw);
+    
     // Add user message
-    const userMsg = { sender: 'user', text: query };
+    const userMsg = { sender: 'user', text: raw };
     const newMessages = [...messages, userMsg];
     setMessages(newMessages);
     setInputQuery('');
 
-    // Generate intelligent agronomy response
+    // If threat detected, block and alert immediately
+    if (!inspection.isClean) {
+      setTimeout(() => {
+        const securityAlert = `🛡️ [SECURITY FIREWALL ALERT] Request blocked by AgriSmart AI Security Guard: Potential Prompt Injection / Unsafe Payload flagged (${inspection.threatDetected}). OWASP LLM01 security rule enforced.`;
+        setMessages([...newMessages, { sender: 'ai', text: securityAlert, isSecurityAlert: true }]);
+        speakText('Security alert. Unsafe prompt injection attempt detected and blocked.');
+      }, 400);
+      return;
+    }
+
+    // Generate intelligent agronomy response using sanitized text
     setTimeout(() => {
-      const reply = generateAgronomyReply(query, activeField, currentLang);
+      const reply = generateAgronomyReply(inspection.sanitizedText, activeField, currentLang);
       setMessages([...newMessages, { sender: 'ai', text: reply }]);
       speakText(reply);
     }, 600);
