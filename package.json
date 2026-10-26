@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/cli": "^8.5.3",
+    "@capacitor/core": "^8.5.3",
     "@geoman-io/leaflet-geoman-free": "^2.20.4",
     "@tailwindcss/vite": "^4.3.3",
     "@turf/area": "^7.4.0",
